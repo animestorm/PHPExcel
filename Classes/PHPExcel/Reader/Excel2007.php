@@ -544,7 +544,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                             self::readStyle($objStyle, $style);
                             $excel->addCellXf($objStyle);
                         }
-
+                        try {
                         foreach ($xmlStyles->cellStyleXfs->xf as $xf) {
                             $numFmt = PHPExcel_Style_NumberFormat::FORMAT_GENERAL;
                             if ($numFmts && $xf["numFmtId"]) {
@@ -572,6 +572,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                             self::readStyle($objStyle, $cellStyle);
                             $excel->addCellStyleXf($objStyle);
                         }
+                       } catch (\Exception $e) {}
                     }
 
                     $dxfs = array();
