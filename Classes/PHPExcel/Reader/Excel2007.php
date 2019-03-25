@@ -572,8 +572,8 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                             self::readStyle($objStyle, $cellStyle);
                             $excel->addCellStyleXf($objStyle);
                         }
+                    }  catch (\Exception $e) {
                     }
-                    } catch (\Exception $e) {
                     }
                     $dxfs = array();
                     if (!$this->readDataOnly && $xmlStyles) {
